@@ -1,0 +1,24 @@
+<h2>Products</h2>
+ <!-- *ngFor is kind of for each loop -->
+ <div *ngFor = "let product of products" >
+   <a [title] = "product.name + ' details'" [routerLink]="['/products', product.productId]">
+    <h3>{{product.name}}</h3>
+   </a>
+   <!-- *ngIf if product have description then it is shown -->
+   <p *ngIf = "product.description" [title]="product.name + ' description'">
+     Description : {{product.description}}
+   </p> 
+   <button (click)="share()" [title]="product.name + ' share'">
+     Share
+   </button>
+   
+   <app-product-alerts [product]="product" (notify)="onNotify()">
+    </app-product-alerts>
+ </div> 
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
